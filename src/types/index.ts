@@ -1,14 +1,14 @@
-export enum PaymentMethod {
-  online,
-  onReceipt
+export const PaymentMethod: { [key: string]: string } = {
+  "card": "online",
+  "cash": "cash",
 }
 
-export enum ProductCategory {
-  softskill = 'софт-скил',
-  hardskill = 'хард-скил',
-  other = 'другое',
-  additional = 'дополнительное',
-  button = 'кнопка'
+export const ProductCategory: { [key: string]: string } = {
+  "софт-скил": "card__category_soft",
+  "хард-скил": "card__category_hard",
+  "кнопка": "card__category_button",
+  "дополнительное": "card__category_additional",
+  "другое": "card__category_other"
 }
 
 export interface IProduct {
@@ -24,7 +24,7 @@ export interface IOrder {
   items: string[];
   total: number;
   address: string;
-  payment: PaymentMethod;
+  payment: string;
   email: string;
 	phone: string;
 }
@@ -34,17 +34,24 @@ export interface IOrderSuccess {
   total: number;
 }
 
+export interface IOrderResult extends IOrder {
+  id: string;
+  error?: string
+}
+
 export interface IShopAPI {
   getProductList: () => Promise<IProduct[]>;
   getProduct: (id: string) => Promise<IProduct>;
-  orderProduct: (order: IOrder) => Promise<IOrderSuccess>;
+  createOrder: (order: IOrder) => Promise<IOrderSuccess>;
 }
 
 export interface IAppState {
   catalog: IProduct[];
   selectedProduct: IProduct | null;
   order: IOrder | null;
-  basket: IProduct[] | null;
+  basket: string[] | null;
+  preview: string | null;
+  formErrors: FormErrors;
   
   // Пользовательские действия
   selectProduct(id: string): void;
