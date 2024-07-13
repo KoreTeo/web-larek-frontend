@@ -1,16 +1,3 @@
-export const PaymentMethod: { [key: string]: string } = {
-  "card": "online",
-  "cash": "cash",
-}
-
-export const ProductCategory: { [key: string]: string } = {
-  "софт-скил": "card__category_soft",
-  "хард-скил": "card__category_hard",
-  "кнопка": "card__category_button",
-  "дополнительное": "card__category_additional",
-  "другое": "card__category_other"
-}
-
 export interface IProduct {
   id: string;
   title: string;

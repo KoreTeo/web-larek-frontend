@@ -1,12 +1,12 @@
 import './scss/styles.scss';
 import { ShopAPI } from './components/ShopAPI';
-import { API_URL, CDN_URL } from './utils/constants';
+import { API_URL, CDN_URL, PaymentMethod } from './utils/constants';
 import { EventEmitter } from './components/base/events';
 import { AppState, CatalogChangeEvent, Product } from './components/AppState';
 import { Page } from './components/Page';
 import { cloneTemplate, ensureElement } from './utils/utils';
 import { Modal } from './components/common/Modal';
-import { IOrder, PaymentMethod } from './types';
+import { IOrder } from './types';
 import { Card } from './components/Card';
 import { Basket } from './components/Basket';
 import { IOrderForm, OrderForm } from './components/OrderForm';

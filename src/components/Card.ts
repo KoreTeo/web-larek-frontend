@@ -1,6 +1,7 @@
 import { Component } from './base/component';
-import { IProduct, ProductCategory } from '../types';
+import { IProduct } from '../types';
 import { ensureElement } from '../utils/utils';
+import { ProductCategory } from '../utils/constants';
 
 interface ICardActions {
   onClick: (event: MouseEvent) => void;
