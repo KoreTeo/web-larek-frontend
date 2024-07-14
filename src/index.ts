@@ -35,6 +35,11 @@ const app = new AppState({}, events);
 // Глобальные контейнеры
 const pageContainer = new Page(document.body, events);
 const modalContainer = new Modal(ensureElement<HTMLElement>('#modal-container'), events);
+const success = new Success(cloneTemplate(successElm), {
+  onClick: () => {
+    modalContainer.close();
+  }
+});
 
 // Переиспользуемые части интерфейса
 const basket = new Basket(cloneTemplate(basketElm), events);
@@ -177,11 +182,7 @@ function handleOrderSubmit() {
     .then((result) => {
       app.clearBasket();
       app.clearOrder();
-      const success = new Success(cloneTemplate(successElm), {
-        onClick: () => {
-          modalContainer.close();
-        }
-      });
+
       success.description = result.total.toString();
 
       modalContainer.render({

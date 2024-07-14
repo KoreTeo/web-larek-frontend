@@ -47,15 +47,12 @@ export class AppState extends Model<IAppState> {
   addProduct(item: IProduct): void {
     if (this.basket.includes(item)) return;
     this.basket.push(item);
-    this.emitChanges('items:changed', { basket: this.basket });
     this.refreshBasket()
   }
   removeProduct(item: IProduct): void {
     if (this.basket.includes(item)) {
       const index = this.basket.indexOf(item);
       this.basket.splice(index, 1);
-      this.emitChanges('basket:open', { basket: this.basket });
-      this.emitChanges('items:changed', { basket: this.basket });
     }
     this.refreshBasket()
   }
@@ -81,7 +78,6 @@ export class AppState extends Model<IAppState> {
 
   clearBasket(): void {
     this.basket = [];
-    this.emitChanges('items:changed', { basket: this.basket });
     this.refreshBasket()
   }
   clearOrder(): void {
