@@ -257,7 +257,7 @@ Success, наследуемый от Component<ISuccess>, предназначе
 - `order:open` - открытие формы заказа;
 - `order:changed` - изменения в заказе;
 - `order.address:change` - изменение адреса
-- `/contacts\.(phone|email):change/` - изменение контактов
+- `contacts:change` - изменение контактов
 - `formErrors:changed` - ошибки формы
 - `order:ready` - событие валидности формы оплаты;
 - `contact:ready` - событие валидности формы контактов;
